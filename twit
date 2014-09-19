@@ -1,3 +1,5 @@
+#! /usr/bin/env ruby
+
 require './config.rb'
 require 'twitter'
 require 'pp'
@@ -10,4 +12,4 @@ client = Twitter::REST::Client.new do |config|
 end
 
 # Tweet
-client.update("#2 Test Tweet from Ruby Program")
+client.update(ARGV[0])
