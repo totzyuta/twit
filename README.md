@@ -14,7 +14,8 @@ $ git clone https://github.com/totzYuta/twit.git
 ##### (2) Run setting file of your twitter account and enter your PIN
 
 ```
-$ ruby setting.rb
+$ cd ./twit/
+$ ruby setting_twit.rb
 ```
 
 ##### (3) Set the path to the commands
