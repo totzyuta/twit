@@ -3,43 +3,16 @@
 require 'oauth'
 require 'oauth/consumer'
 require './config.rb'
+require './setting.rb'
 require 'twitter'
 require 'pp'
-
-
-@consumer=OAuth::Consumer.new( CONSUMER_KEY, CONSUMER_SECRET, {
-  :site=>"https://api.twitter.com"
-})
-
-@request_token=@consumer.get_request_token
-@request_token.authorize_url
-
-URL =  @request_token.authorize_url
-
-system "open #{URL}"
-
-print "Please Enter Your PIN: "
-
-# the pin is supposed to be int
-pin = (gets.chomp).to_i
-
-@access_token = @request_token.get_access_token(:oauth_verifier => pin)
-
-ACCESS_TOKEN = @access_token.token
-ACCESS_TOKEN_SECRET = @access_token.secret
-
-puts @access_token.token
-puts @access_token.secret   
-
-puts ACCESS_TOKEN
-puts ACCESS_TOKEN_SECRET
 
 client = Twitter::REST::Client.new do |config|
   config.consumer_key = CONSUMER_KEY
   config.consumer_secret = CONSUMER_SECRET
-  config.access_token = @access_token.token
-  config.access_token_secret = @access_token.secret
+  config.access_token = ACCESS_TOKEN
+  config.access_token_secret = ACCESS_TOKEN_SECRET
 end
 
 # Tweet
-client.update("Test Tweet from Ruby Program #twit")
+client.update(ARGV[0])
