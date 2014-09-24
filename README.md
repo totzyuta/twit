@@ -34,3 +34,7 @@ $ sudo ln -s /Users/YOUR_USER_NAME/twit/twit /usr/bin/
 ```
 $ twit "I'm tweeting from terminal!"
 ```
+
+
+Detail 
+https://totzyuta.github.io/blog/2014/09/24/created-cli-tool-tweet-from-terminal-by-ruby/
