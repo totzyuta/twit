@@ -15,4 +15,6 @@ client = Twitter::REST::Client.new do |config|
 end
 
 # Tweet
-client.update(ARGV[0])
+if client.update(ARGV[0])
+  puts "\e[36m♪ Tweeted\e[0m"
+end
