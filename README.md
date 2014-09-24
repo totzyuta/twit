@@ -7,6 +7,7 @@
 ##### (1) Clone this repository.
 
 ```
+$ cd ~/
 $ git clone https://github.com/totzYuta/twit.git
 ```
 
@@ -19,8 +20,11 @@ $ ruby setting.rb
 ##### (3) Set the path to the command 'twit'
 
 ```
-$ sudo ln -s /Users/user/twit/twit /usr/bin/
+$ sudo ln -s /Users/YOUR_USER_NAME/twit/twit /usr/bin/
 ```
+
+※ Set absolute path to twit file
+
 
 ##### (4) Just to tweet!
 
