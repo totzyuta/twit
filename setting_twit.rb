@@ -1,9 +1,10 @@
 require 'oauth'
 require 'oauth/consumer'
-require './config.rb'
 require 'twitter'
 require 'pp'
 
+CONSUMER_KEY = "TvEDulP9wjxcAkpPS2r1ux4Fr"
+CONSUMER_SECRET = "t3AO41ngBpr4I30I0bkYNFXXlQtjCwahAgNXoiEtYHkaWxtIcu"
 
 @consumer=OAuth::Consumer.new( CONSUMER_KEY, CONSUMER_SECRET, {
   :site=>"https://api.twitter.com"

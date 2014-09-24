@@ -2,10 +2,12 @@
 
 require 'oauth'
 require 'oauth/consumer'
-require './config.rb'
-require './setting.rb'
+require '/usr/bin/setting.rb'
 require 'twitter'
 require 'pp'
+
+CONSUMER_KEY = "TvEDulP9wjxcAkpPS2r1ux4Fr"
+CONSUMER_SECRET = "t3AO41ngBpr4I30I0bkYNFXXlQtjCwahAgNXoiEtYHkaWxtIcu"
 
 client = Twitter::REST::Client.new do |config|
   config.consumer_key = CONSUMER_KEY

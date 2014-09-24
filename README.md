@@ -17,9 +17,11 @@ $ git clone https://github.com/totzYuta/twit.git
 $ ruby setting.rb
 ```
 
-##### (3) Set the path to the command 'twit'
+##### (3) Set the path to the commands
 
 ```
+$ sudo ln -s /Users/YOUR_USER_NAME/twit/setting_twit.rb /usr/bin/
+$ sudo ln -s /Users/YOUR_USER_NAME/twit/setting.rb /usr/bin/
 $ sudo ln -s /Users/YOUR_USER_NAME/twit/twit /usr/bin/
 ```
 
