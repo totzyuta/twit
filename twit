@@ -17,6 +17,8 @@ client = Twitter::REST::Client.new do |config|
 end
 
 # Tweet
-if client.update(ARGV[0])
+if ARGV[1]
+  # Tweet by a certain client
+elsif client.update(ARGV[0])
   puts "\e[36m♪ Tweeted\e[0m"
 end
