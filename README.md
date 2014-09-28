@@ -31,5 +31,5 @@ $ sudo ln -s /Users/YOUR_USER_NAME/twit/setting_files /usr/bin/
 ##### (4) Just to tweet!
 
 ```
-$ twit "I'm tweeting from terminal!" YOUR_ACOUNT
+$ twit "I'm tweeting from terminal!" YOUR_ACCOUNT_ID_WITHOUT@
 ```

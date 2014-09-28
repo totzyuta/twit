@@ -2,28 +2,30 @@
 
 require 'oauth'
 require 'oauth/consumer'
-if ARGV[1]
-  require "/usr/bin/twit_setting_files/setting_file_#{ARGV[1]}"
-elsif
-  # Tweet by the account used before
-  # Temporary print error alert
-  puts "Please Select Your Account After Tweet"
-  # Exit this program
-end
 require 'twitter'
 require 'pp'
 
-CONSUMER_KEY = "TvEDulP9wjxcAkpPS2r1ux4Fr"
-CONSUMER_SECRET = "t3AO41ngBpr4I30I0bkYNFXXlQtjCwahAgNXoiEtYHkaWxtIcu"
+if ARGV[1]
+  require "/usr/bin/twit_setting_files/setting_file_#{ARGV[1]}"
 
-# Tweet by a certain client
-client = Twitter::REST::Client.new do |config|
-  config.consumer_key = CONSUMER_KEY
-  config.consumer_secret = CONSUMER_SECRET
-  config.access_token = ACCESS_TOKEN
-  config.access_token_secret = ACCESS_TOKEN_SECRET
+  CONSUMER_KEY = "TvEDulP9wjxcAkpPS2r1ux4Fr"
+  CONSUMER_SECRET = "t3AO41ngBpr4I30I0bkYNFXXlQtjCwahAgNXoiEtYHkaWxtIcu"
+
+  # Tweet by a certain client
+  client = Twitter::REST::Client.new do |config|
+    config.consumer_key = CONSUMER_KEY
+    config.consumer_secret = CONSUMER_SECRET
+    config.access_token = ACCESS_TOKEN
+    config.access_token_secret = ACCESS_TOKEN_SECRET
+  end
+
+  if client.update(ARGV[0])
+    puts "\e[36m♪ Tweeted\e[0m"
+  end
+elsif
+  # Tweet by the account used before
+  # Temporary print error alert
+  puts "Error: Please Select Your Account After Tweet"
+  # Exit this program
 end
 
-if client.update(ARGV[0])
-  puts "\e[36m♪ Tweeted\e[0m"
-end
