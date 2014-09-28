@@ -30,11 +30,12 @@ endpoint = OAuth::AccessToken.new(@consumer, @access_token.token, @access_token.
 # GET user account information as json file
 response = endpoint.request(:get, 'https://api.twitter.com/1.1/account/settings.json')
 result = JSON.parse(response.body)
-p result
+screen_name = result["screen_name"]
 
-io = File.open("setting_#{@access_token.token}.rb", "w")
-io.puts "ACCESS_TOKEN_#{@access_token.token} = \"#{@access_token.token}\""
-io.puts "ACCESS_TOKEN_SECRET_#{@access_token.token} = \"#{@access_token.secret}\""
+io = File.open("./twit_setting_files/setting_file_#{screen_name}.rb", "w")
+io.puts "ACCESS_TOKEN = \"#{@access_token.token}\""
+io.puts "ACCESS_TOKEN_SECRET = \"#{@access_token.secret}\""
+io.puts "SCREEN_NAME = \"#{screen_name}\""
 io.close
 
 puts "================="
