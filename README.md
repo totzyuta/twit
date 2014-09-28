@@ -15,6 +15,7 @@ $ git clone https://github.com/totzYuta/twit.git
 
 ```
 $ cd ./twit/
+$ bundle install
 $ ruby setting_twit.rb
 ```
 
