@@ -2,7 +2,7 @@
 
 #### CLI Tool Simply to Tweet!
 
-### Just 4 Steps to Start
+### Just 3 Steps to Start
 
 ##### (1) Clone this repository in HOME directory.
 
