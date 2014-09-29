@@ -15,6 +15,7 @@ $ git clone https://github.com/totzYuta/twit.git
 
 ```
 $ cd ./twit/
+$ bundle install
 $ ruby setting_twit.rb
 ```
 
@@ -22,7 +23,7 @@ $ ruby setting_twit.rb
 
 ```
 $ sudo ln -s /Users/YOUR_USER_NAME/twit/twit /usr/bin/
-$ sudo ln -s /Users/YOUR_USER_NAME/twit/setting_files /usr/bin/
+$ sudo ln -s /Users/YOUR_USER_NAME/twit/twit_setting_files /usr/bin/
 ```
 
 ※ Set absolute path to twit file
