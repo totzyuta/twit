@@ -3,7 +3,7 @@
 #### CLI Tool Simply to Tweet!
 
 ```
-$ twit "I am tweeting from terminal!" YOUR_ACCOUNT
+$ twit "I tweet from terminal." yutatotz
 ```
 
 
