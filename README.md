@@ -2,6 +2,11 @@
 
 #### CLI Tool Simply to Tweet!
 
+```
+$ twit "I am tweeting from terminal!" YOUR_ACCOUNT
+```
+
+
 ### Just 3 Steps to Start
 
 ##### (1) Clone this repository in HOME directory.
