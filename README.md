@@ -1,38 +1,41 @@
 # twit
 
-#### CLI Tool Simply Just to Tweet!
+#### CLI Tool Simply to Tweet!
 
-### Just 4 Steps to Start
+```
+$ twit "I tweet from terminal." yutatotz
+```
 
-##### (1) Clone this repository.
+
+### Just 3 Steps to Start
+
+##### (1) Clone this repository in HOME directory.
 
 ```
 $ cd ~/
 $ git clone https://github.com/totzYuta/twit.git
 ```
 
-##### (2) Run setting file of your twitter account and enter your PIN
+
+##### (2) Run setting file and enter your PIN
 
 ```
 $ cd ./twit/
-$ ruby setting_twit.rb
+$ sh setup.sh
 ```
 
-##### (3) Set the path to the commands
+
+##### (3) Just to tweet!
 
 ```
-$ sudo ln -s /Users/YOUR_USER_NAME/twit/setting_twit.rb /usr/bin/
-$ sudo ln -s /Users/YOUR_USER_NAME/twit/setting.rb /usr/bin/
-$ sudo ln -s /Users/YOUR_USER_NAME/twit/twit /usr/bin/
+$ twit "I'm tweeting from terminal!" YOUR_ACCOUNT_ID_WITHOUT@
 ```
 
-※ Set absolute path to twit file
 
-
-##### (4) Just to tweet!
+### How to add an account
 
 ```
-$ twit "I'm tweeting from terminal!"
+$ ruby setting_account.rb
 ```
 
 
