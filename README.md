@@ -1,6 +1,6 @@
 # twit
 
-#### CLI Tool Simply Just to Tweet!
+#### CLI Tool Simply to Tweet!
 
 ### Just 4 Steps to Start
 

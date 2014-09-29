@@ -6,7 +6,7 @@ require 'twitter'
 require 'pp'
 
 if ARGV[1]
-  require "/usr/bin/twit_setting_files/setting_file_#{ARGV[1]}"
+  require "~/twit/twit_setting_files/setting_file_#{ARGV[1]}"
 
   CONSUMER_KEY = "TvEDulP9wjxcAkpPS2r1ux4Fr"
   CONSUMER_SECRET = "t3AO41ngBpr4I30I0bkYNFXXlQtjCwahAgNXoiEtYHkaWxtIcu"
