@@ -4,6 +4,7 @@
 
 ```
 $ twit "I tweet from terminal." yutatotz
+♪  Tweeted
 ```
 
 
@@ -28,7 +29,7 @@ $ sh setup.sh
 ##### (3) Just to tweet!
 
 ```
-$ twit "I'm tweeting from terminal!" YOUR_ACCOUNT_ID_WITHOUT@
+$ twit tweet "Tweet from terminal :)" YOUR_ACCOUNT_ID_WITHOUT@
 ```
 
 
@@ -36,4 +37,21 @@ $ twit "I'm tweeting from terminal!" YOUR_ACCOUNT_ID_WITHOUT@
 
 ```
 $ ruby setting_account.rb
+```
+
+
+### Commands
+
+#### Tweet
+
+```
+$ twit tweet "tweet" yutatotz
+$ twit t "tweet" yutatotz
+```
+
+#### Show a list of accounts
+
+```
+$ twit list
+$ twit l
 ```

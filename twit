@@ -11,7 +11,6 @@ CONSUMER_KEY = "TvEDulP9wjxcAkpPS2r1ux4Fr"
 CONSUMER_SECRET = "t3AO41ngBpr4I30I0bkYNFXXlQtjCwahAgNXoiEtYHkaWxtIcu"
 
 class Twit < Thor
-  default_command :twit
 
   desc "tweet", "t: Tweet by a certain account"
   def tweet(tweet='', account='') 
