@@ -13,11 +13,10 @@ CONSUMER_SECRET = "t3AO41ngBpr4I30I0bkYNFXXlQtjCwahAgNXoiEtYHkaWxtIcu"
 class Twit < Thor
   default_command :twit
 
-  desc "t", "simply tweet"
-  def t(tweet='', account='') 
+  desc "tweet", "t: Tweet by a certain account"
+  def tweet(tweet='', account='') 
     require "/usr/bin/twit_setting_files/setting_file_#{account}"
-
-    # Tweet by a certain client
+    
     client = Twitter::REST::Client.new do |config|
       config.consumer_key = CONSUMER_KEY
       config.consumer_secret = CONSUMER_SECRET
@@ -30,9 +29,16 @@ class Twit < Thor
     end
   end
 
-  desc 'list', 'show a list of accounts'
+  desc 'list', 'l: Show a list of accounts'
   def list
-    puts "list"
+    puts "\n---Accounts----" 
+    accounts = Dir["/usr/bin/twit_setting_files/*"]
+    accounts.each do |account|
+      account.sub! '/usr/bin/twit_setting_files/setting_file_', ''
+      account.sub! '.rb', ''
+      puts account
+    end
+    puts "---------------" 
   end
 
 end
