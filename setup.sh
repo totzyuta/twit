@@ -1,3 +1,4 @@
 bundle install
 sudo ln -s ~/twit/twit /usr/bin/
-ruby setting_account.rb
+sudo ln -s ~/twit/twit_setting_files /usr/bin/
+twit setup

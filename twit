@@ -4,28 +4,79 @@ require 'oauth'
 require 'oauth/consumer'
 require 'twitter'
 require 'pp'
+require 'json'
 
-if ARGV[1]
-  require "~/twit/twit_setting_files/setting_file_#{ARGV[1]}"
+require 'thor'
 
-  CONSUMER_KEY = "TvEDulP9wjxcAkpPS2r1ux4Fr"
-  CONSUMER_SECRET = "t3AO41ngBpr4I30I0bkYNFXXlQtjCwahAgNXoiEtYHkaWxtIcu"
+CONSUMER_KEY = "TvEDulP9wjxcAkpPS2r1ux4Fr"
+CONSUMER_SECRET = "t3AO41ngBpr4I30I0bkYNFXXlQtjCwahAgNXoiEtYHkaWxtIcu"
 
-  # Tweet by a certain client
-  client = Twitter::REST::Client.new do |config|
-    config.consumer_key = CONSUMER_KEY
-    config.consumer_secret = CONSUMER_SECRET
-    config.access_token = ACCESS_TOKEN
-    config.access_token_secret = ACCESS_TOKEN_SECRET
+class Twit < Thor
+
+  desc "tweet", "t: Tweet by a certain account"
+  def tweet(tweet='', account='') 
+    require "/usr/bin/twit_setting_files/setting_file_#{account}"
+    
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key = CONSUMER_KEY
+      config.consumer_secret = CONSUMER_SECRET
+      config.access_token = ACCESS_TOKEN
+      config.access_token_secret = ACCESS_TOKEN_SECRET
+    end
+
+    if client.update(tweet)
+      puts "\e[36m♪ Tweeted\e[0m"
+    end
   end
 
-  if client.update(ARGV[0])
-    puts "\e[36m♪ Tweeted\e[0m"
+  desc 'list', 'l: Show a list of accounts'
+  def list
+    puts "\n---Accounts----" 
+    accounts = Dir["/usr/bin/twit_setting_files/*"]
+    accounts.each do |account|
+      account.sub! '/usr/bin/twit_setting_files/setting_file_', ''
+      account.sub! '.rb', ''
+      puts account
+    end
+    puts "---------------" 
   end
-elsif
-  # Tweet by the account used before
-  # Temporary print error alert
-  puts "Error: Please Select Your Account After Tweet"
-  # Exit this program
+  
+  desc 'setup', 's: Setting an account'
+  def setup
+    @consumer=OAuth::Consumer.new( CONSUMER_KEY, CONSUMER_SECRET, {
+        :site=>"https://api.twitter.com"
+    })
+
+    @request_token=@consumer.get_request_token
+    @request_token.authorize_url
+
+    url = @request_token.authorize_url
+    
+    # Open authorize page by default browser
+    system "open #{url}"
+
+    print "Please Enter Your PIN: "
+    pin = $stdin.gets.to_i
+    
+    @access_token = @request_token.get_access_token(:oauth_verifier => pin)
+    
+    # GET user account information as json file
+    endpoint = OAuth::AccessToken.new(@consumer, @access_token.token, @access_token.secret)
+    response = endpoint.request(:get, 'https://api.twitter.com/1.1/account/settings.json')
+    result = JSON.parse(response.body)
+    screen_name = result["screen_name"]
+    
+    io = File.open("./twit_setting_files/setting_file_#{screen_name}.rb", "w")
+    io.puts "ACCESS_TOKEN = \"#{@access_token.token}\""
+    io.puts "ACCESS_TOKEN_SECRET = \"#{@access_token.secret}\""
+    io.puts "SCREEN_NAME = \"#{screen_name}\""
+    io.close
+    
+    puts "================="
+    puts "Setting Completed"
+    puts "================="
+  end
+
 end
 
+Twit.start(ARGV)
