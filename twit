@@ -4,6 +4,7 @@ require 'oauth'
 require 'oauth/consumer'
 require 'twitter'
 require 'pp'
+require 'json'
 
 require 'thor'
 
@@ -38,6 +39,42 @@ class Twit < Thor
       puts account
     end
     puts "---------------" 
+  end
+  
+  desc 'setup', 's: Setting an account'
+  def setup
+    @consumer=OAuth::Consumer.new( CONSUMER_KEY, CONSUMER_SECRET, {
+        :site=>"https://api.twitter.com"
+    })
+
+    @request_token=@consumer.get_request_token
+    @request_token.authorize_url
+
+    url = @request_token.authorize_url
+    
+    # Open authorize page by default browser
+    system "open #{url}"
+
+    print "Please Enter Your PIN: "
+    pin = $stdin.gets.to_i
+    
+    @access_token = @request_token.get_access_token(:oauth_verifier => pin)
+    
+    # GET user account information as json file
+    endpoint = OAuth::AccessToken.new(@consumer, @access_token.token, @access_token.secret)
+    response = endpoint.request(:get, 'https://api.twitter.com/1.1/account/settings.json')
+    result = JSON.parse(response.body)
+    screen_name = result["screen_name"]
+    
+    io = File.open("./twit_setting_files/setting_file_#{screen_name}.rb", "w")
+    io.puts "ACCESS_TOKEN = \"#{@access_token.token}\""
+    io.puts "ACCESS_TOKEN_SECRET = \"#{@access_token.secret}\""
+    io.puts "SCREEN_NAME = \"#{screen_name}\""
+    io.close
+    
+    puts "================="
+    puts "Setting Completed"
+    puts "================="
   end
 
 end
