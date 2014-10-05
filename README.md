@@ -35,14 +35,14 @@ $ twit tweet "Tweet from terminal :)" YOUR_ACCOUNT_ID_WITHOUT@
 
 ### Commands
 
-#### Tweet
+- Tweet
 
 ```
 $ twit tweet "tweet" yutatotz
 $ twit t "tweet" yutatotz
 ```
 
-#### Show a list of accounts
+- Show a list of accounts
 
 ```
 $ twit list
@@ -50,7 +50,7 @@ $ twit l
 ```
 
 
-#### Add an account
+- Add an account
 
 ```
 $ twit setup
