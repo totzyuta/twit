@@ -33,13 +33,6 @@ $ twit tweet "Tweet from terminal :)" YOUR_ACCOUNT_ID_WITHOUT@
 ```
 
 
-### How to add an account
-
-```
-$ ruby setting_account.rb
-```
-
-
 ### Commands
 
 #### Tweet
@@ -54,4 +47,12 @@ $ twit t "tweet" yutatotz
 ```
 $ twit list
 $ twit l
+```
+
+
+#### Add an account
+
+```
+$ twit setup
+$ twit s
 ```
