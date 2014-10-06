@@ -15,17 +15,28 @@ class Twit < Thor
 
   desc "tweet", "t: Tweet by a certain account"
   def tweet(tweet='', account='') 
-    require "/usr/bin/twit_setting_files/setting_file_#{account}"
-    
-    client = Twitter::REST::Client.new do |config|
-      config.consumer_key = CONSUMER_KEY
-      config.consumer_secret = CONSUMER_SECRET
-      config.access_token = ACCESS_TOKEN
-      config.access_token_secret = ACCESS_TOKEN_SECRET
+    # fetch registered accounts
+    accounts = Dir["/usr/bin/twit_setting_files/*"]
+    accounts.each do |account|
+      account.sub! '/usr/bin/twit_setting_files/setting_file_', ''
+      account.sub! '.rb', ''
     end
+    if accounts.index(account)
+      require "/usr/bin/twit_setting_files/setting_file_#{account}"
 
-    if client.update(tweet)
-      puts "\e[36m♪ Tweeted\e[0m"
+      client = Twitter::REST::Client.new do |config|
+        config.consumer_key = CONSUMER_KEY
+        config.consumer_secret = CONSUMER_SECRET
+        config.access_token = ACCESS_TOKEN
+        config.access_token_secret = ACCESS_TOKEN_SECRET
+      end
+
+      # Tweet
+      if client.update(tweet)
+        puts "\e[36m♪ Tweeted\e[0m"
+      end
+    elsif
+      p "Error: no such account"
     end
   end
 
