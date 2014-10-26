@@ -32,11 +32,16 @@ class Twit < Thor
       end
 
       # Tweet
-      if client.update(tweet)
-        puts "\e[36m♪ Tweeted\e[0m"
+      if tweet.split(//).size < 140
+        if client.update(tweet)
+          puts "\e[36m♪ Tweeted\e[0m"
+        end
+      else
+        puts "Error: tweet under 140 characters"
       end
+
     elsif
-      p "Error: no such account"
+      puts "Error: no such account"
     end
   end
 
