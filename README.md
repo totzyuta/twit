@@ -57,4 +57,5 @@ $ twit setup
 $ twit s
 ```
 
-If you notice any problem, please contact my twitter account (@totzYuta or @totu_iy) or just create an issue.
+
+If you notice any problem, please contact my twitter account ([@totzYuta](https://twitter.com/totzYuta) or [@totu_iy](https://twitter.com/totu_iy)) or just create an issue.
