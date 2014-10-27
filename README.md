@@ -56,3 +56,9 @@ $ twit l
 $ twit setup
 $ twit s
 ```
+
+Detail 
+https://totzyuta.github.io/blog/2014/09/24/created-cli-tool-tweet-from-terminal-by-ruby/
+
+If you notice any problem, please contact my twitter account (@totzYuta) or just create an issue here. Thank you.  
+
