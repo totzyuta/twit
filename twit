@@ -40,7 +40,27 @@ class Twit < Thor
         puts "Error: tweet under 140 characters"
       end
 
-    elsif
+    elsif account==''
+      # tweet by default account
+      require "/usr/bin/twit_setting_files/setting_file_default"
+
+      client = Twitter::REST::Client.new do |config|
+        config.consumer_key = CONSUMER_KEY
+        config.consumer_secret = CONSUMER_SECRET
+        config.access_token = ACCESS_TOKEN
+        config.access_token_secret = ACCESS_TOKEN_SECRET
+      end
+
+      # Tweet
+      if tweet.split(//).size < 140
+        if client.update(tweet)
+          puts "\e[36m♪ Tweeted\e[0m"
+        end
+      else
+        puts "Error: tweet under 140 characters"
+      end
+
+    else
       puts "Error: no such account"
     end
   end
@@ -83,6 +103,42 @@ class Twit < Thor
     screen_name = result["screen_name"]
     
     io = File.open("./twit_setting_files/setting_file_#{screen_name}.rb", "w")
+    io.puts "ACCESS_TOKEN = \"#{@access_token.token}\""
+    io.puts "ACCESS_TOKEN_SECRET = \"#{@access_token.secret}\""
+    io.puts "SCREEN_NAME = \"#{screen_name}\""
+    io.close
+    
+    puts "================="
+    puts "Setting Completed"
+    puts "================="
+  end
+
+  desc 'defaultset', 'd: Set Default Account'
+  def defaultset
+    @consumer=OAuth::Consumer.new( CONSUMER_KEY, CONSUMER_SECRET, {
+        :site=>"https://api.twitter.com"
+    })
+
+    @request_token=@consumer.get_request_token
+    @request_token.authorize_url
+
+    url = @request_token.authorize_url
+    
+    # Open authorize page by default browser
+    system "open #{url}"
+
+    print "Please Enter Your PIN: "
+    pin = $stdin.gets.to_i
+    
+    @access_token = @request_token.get_access_token(:oauth_verifier => pin)
+
+    # GET user account information as json file
+    endpoint = OAuth::AccessToken.new(@consumer, @access_token.token, @access_token.secret)
+    response = endpoint.request(:get, 'https://api.twitter.com/1.1/account/settings.json')
+    result = JSON.parse(response.body)
+    screen_name = result["screen_name"]
+    
+    io = File.open("./twit_setting_files/setting_file_default.rb", "w")
     io.puts "ACCESS_TOKEN = \"#{@access_token.token}\""
     io.puts "ACCESS_TOKEN_SECRET = \"#{@access_token.secret}\""
     io.puts "SCREEN_NAME = \"#{screen_name}\""
