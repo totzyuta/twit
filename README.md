@@ -67,4 +67,4 @@ $ twit d
 Detail 
 https://totzyuta.github.io/blog/2014/09/24/created-cli-tool-tweet-from-terminal-by-ruby/
 
-If you notice any problem, please contact my twitter account (@totzYuta) or just create an issue here. Thank you.  
+If you notice any problem, please contact my twitter account ([@totzYuta](https://twitter.com/yutaTotz) or [@totu_iy](https://twitter.com/totu_iy)) or just create an issue.
