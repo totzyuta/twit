@@ -67,12 +67,21 @@ class Twit < Thor
 
   desc 'list', 'l: Show a list of accounts'
   def list
+    # Fetch the name of default account 
+    if s=File.read("twit_setting_files/setting_file_default.rb", :encoding => Encoding::UTF_8)
+      s.gsub!(/^.*\n.*\nSCREEN_NAME = \"([^\\]*)\"\n/, '\1')
+    end
     puts "\n---Accounts----" 
     accounts = Dir["/usr/bin/twit_setting_files/*"]
     accounts.each do |account|
       account.sub! '/usr/bin/twit_setting_files/setting_file_', ''
       account.sub! '.rb', ''
-      puts account
+      if s==account
+        puts account+" (Default)"
+      elsif account=="default"
+      else
+        puts account
+      end
     end
     puts "---------------" 
   end
