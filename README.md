@@ -3,7 +3,7 @@
 #### CLI Tool Simply to Tweet!
 
 ```
-$ twit "I tweet from terminal." yutatotz
+$ twit t "I tweet from terminal." yutaTotz
 ♪  Tweeted
 ```
 
@@ -55,6 +55,13 @@ $ twit l
 ```
 $ twit setup
 $ twit s
+```
+
+- Set default account (you can tweet without account id)
+
+```
+$ twit defaultset
+$ twit d
 ```
 
 Detail 
