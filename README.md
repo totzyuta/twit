@@ -38,8 +38,8 @@ $ twit tweet "Tweet from terminal :)" YOUR_ACCOUNT_ID_WITHOUT@
 - Tweet
 
 ```
-$ twit tweet "tweet" yutatotz
-$ twit t "tweet" yutatotz
+$ twit tweet "tweet" yutaTotz
+$ twit t "tweet" yutaTotz
 ```
 
 - Show a list of accounts
@@ -68,4 +68,3 @@ Detail
 https://totzyuta.github.io/blog/2014/09/24/created-cli-tool-tweet-from-terminal-by-ruby/
 
 If you notice any problem, please contact my twitter account (@totzYuta) or just create an issue here. Thank you.  
-
