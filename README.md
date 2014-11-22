@@ -1,4 +1,4 @@
-# twit
+# twiterm
 
 #### CLI Tool Simply to Tweet!
 
