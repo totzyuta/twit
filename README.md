@@ -14,14 +14,14 @@ $ twit t "I tweet from terminal." yutaTotz
 
 ```
 $ cd ~/
-$ git clone https://github.com/totzYuta/twit.git
+$ git clone https://github.com/totzYuta/twiterm.git
 ```
 
 
 ##### (2) Run setting file and enter your PIN
 
 ```
-$ cd ./twit/
+$ cd ./twiterm/
 $ sh setup.sh
 ```
 
